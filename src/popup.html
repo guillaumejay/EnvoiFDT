@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Getting Started Extension's Popup</title>
+    <style>
+      body {
+        min-width: 357px;
+        overflow-x: hidden;
+      }
+    </style>
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
+     -->
+    <script src="popup.js"></script>
+  </head>
+  <body>
+  <table>
+	<tr>
+		<td>
+		De
+		</td>
+		<td>
+		<input type="email" id="fromEmail"/>
+		</td>
+	</tr>
+  <Tr>
+	<td>
+		A
+	</td>
+	<td>
+	<input type="email" id="toEmail"/>
+	</td>
+  </tr>
+
+    <tr>
+	<td colspan=2>
+		<textarea  id="emailBody" rows="15" cols="40"></textarea>
+	</td>
+  </tr>
+  </table>
+  <button id="sendEmail">Envoyer</button>
+  </body>
+</html>
+
