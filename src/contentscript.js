@@ -8,9 +8,12 @@ function(element) {
 );
 var dateList=document.querySelectorAll('span.x1r');
 var infoList=new Array(8);
+// Check if we're on a review or input page
+var onReview=dateList[13].innerText=='Total';
+var shiftDate=(onReview)?6:5;
 for (var i=0;i<8;i++)
 {
-	infoList[i]={'number' :hourList[i],'txtDate':dateList[i+5].innerHTML};
+	infoList[i]={'number' :hourList[i],'txtDate':dateList[i+shiftDate].innerHTML};
 }
 
 chrome.extension.sendRequest(infoList);
