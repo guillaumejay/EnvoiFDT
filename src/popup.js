@@ -14,8 +14,7 @@ function sendEmail() {
 chrome.extension.onRequest.addListener(function(infoList) {
 	var texte="Bonjour\r\n\r\nVoici ma feuille de temps :\r\n" + infoList[0].txtDate + "&agrave" + infoList[6].txtDate;
 	texte+="\r\n\r\n";
-	for (var i=0;i<8;i++)
-	{
+	for (var i=0;i<8;i++)	{
 		texte+=infoList[i].txtDate + " : " + infoList[i].number + "\r\n";
 	}
 	var element=document.getElementById('emailBody');
@@ -30,21 +29,18 @@ document.addEventListener('DOMContentLoaded', function () {
       chrome.tabs.executeScript(
         activeTabs[0].id, {file: 'contentscript.js', allFrames: false});
     });
-  chrome.storage.sync.get("signature", function(result)
-  {
-  if (Object.getOwnPropertyNames(result).length > 0)  {
-  
-	document.getElementById('signature').value=result.signature;
+	chrome.storage.sync.get("signature", function(result)  {
+		if (Object.getOwnPropertyNames(result).length > 0)  {
+		document.getElementById('signature').value=result.signature;
+		}
+	});
+	chrome.storage.sync.get("toEmail", function(result){
+		var email=result.toEmail;
+		if (Object.getOwnPropertyNames(result).length == 0) {
+		result.toEmail="ft@vob-ti.com";
 	}
-  });
-  chrome.storage.sync.get("toEmail", function(result)
-  {
-	var email=result.toEmail;
-    if (Object.getOwnPropertyNames(result).length == 0) {
-	result.toEmail="ft@vob-ti.com";
-  }
 	document.getElementById('toEmail').value=result.toEmail;
-  });
-});
+	});
+	});
   document.getElementById('sendEmail').onclick = sendEmail;
  });
